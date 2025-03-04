@@ -94,7 +94,7 @@ const Hero = () => {
             </h1>
             <h2 className="text-xl md:text-2xl mb-6 text-gray-300">Aspiring Software Developer</h2>
             <p className="text-gray-300 mb-8 max-w-lg">
-              Passionate about programming and problem-solving with expertise in Python, C, and MATLAB.
+              Passionate about programming and problem-solving with expertise in Python and MATLAB.
               Looking to apply my skills to create innovative solutions and contribute to impactful projects.
             </p>
             
