@@ -212,15 +212,17 @@ const About = () => {
 const Skills = () => {
   const skills = [
     { name: "Python", icon: <Code size={24} />, category: "technical" },
-    { name: "C (Basics)", icon: <Code size={24} />, category: "technical" },
     { name: "MATLAB", icon: <Code size={24} />, category: "technical" },
+    { name: "sql", icon: <Cpu size={24} />, category: "technical" },
     { name: "PowerBI", icon: <Cpu size={24} />, category: "technical" },
     { name: "HTML", icon: <Code size={24} />, category: "technical" },
     { name: "CSS", icon: <Code size={24} />, category: "technical" },
+   // { name: "C (Basics)", icon: <Code size={24} />, category: "technical" },
+    { name: "Teamwork", icon: <Brain size={24} />, category: "soft" },
     { name: "Problem Solving", icon: <Brain size={24} />, category: "soft" },
     { name: "Critical Thinking", icon: <Brain size={24} />, category: "soft" },
     { name: "Communication", icon: <Brain size={24} />, category: "soft" },
-    { name: "Teamwork", icon: <Brain size={24} />, category: "soft" }
+    
   ];
   
   const [ref, inView] = useInView({
@@ -414,7 +416,17 @@ const Projects = () => {
         "Implemented sensor-based obstacle detection for real-time path correction and safety."
       ],
       image: "https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
-    }
+    },
+    {
+      title: "Weed Detection in Crops Using MATLAB",
+      technologies: "Image Processing, Machine Learning, MATLAB",
+      description: [
+        "Developed an image-processing-based system for detecting weeds in agricultural fields using MATLAB.",
+        "Implemented advanced segmentation techniques to differentiate weeds from crops efficiently.",
+        "Utilized machine learning algorithms for precise classification and identification of weed-infested areas."
+      ],
+      image: "https://media.istockphoto.com/id/1307187874/photo/rows-of-winter-wheat-in-the-foundation-stage-of-growth-taken-in-the-uk-in-march-on-a-sunny.jpg?s=612x612&w=0&k=20&c=EBMwlqLmG50q3MX630uLEFuwBedA1Z4Ivo7j55bbfUc="
+    }    
   ];
   
   return (
@@ -479,7 +491,7 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
           ))}
         </ul>
         
-        <motion.button 
+       <motion.button 
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="px-4 py-2 bg-gradient-to-r from-pink-500 to-violet-500 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300"
@@ -497,7 +509,7 @@ const Education = () => {
       institution: "Kalasalingam Academy of Research and Education",
       degree: "Bachelor of Technology in Electronics and Communication Engineering",
       year: "Pursuing",
-      score: "CGPA: 7.85",
+      score: "CGPA: 7.88",
       location: "Tamil Nadu"
     },
     {
