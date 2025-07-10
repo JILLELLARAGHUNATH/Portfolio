@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { 
@@ -189,7 +189,7 @@ const About = () => {
             <div className="md:w-2/3">
               <h3 className="text-2xl font-semibold mb-4">Career Objective</h3>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                Aspiring software developer with a strong foundation in Python, C, and MATLAB, eager to apply programming skills
+                Aspiring software developer with a strong foundation in Python and MATLAB, eager to apply programming skills
                 to real-world problem-solving. Passionate about learning emerging technologies and contributing to innovative projects.
                 Seeking an opportunity to enhance technical expertise, collaborate with dynamic teams, and develop solutions that drive
                 efficiency and innovation.
@@ -214,10 +214,10 @@ const Skills = () => {
     { name: "Python", icon: <Code size={24} />, category: "technical" },
     { name: "MATLAB", icon: <Code size={24} />, category: "technical" },
     { name: "sql", icon: <Cpu size={24} />, category: "technical" },
-    { name: "PowerBI", icon: <Cpu size={24} />, category: "technical" },
+  // { name: "PowerBI", icon: <Cpu size={24} />, category: "technical" },
     { name: "HTML", icon: <Code size={24} />, category: "technical" },
     { name: "CSS", icon: <Code size={24} />, category: "technical" },
-   // { name: "C (Basics)", icon: <Code size={24} />, category: "technical" },
+  // { name: "C (Basics)", icon: <Code size={24} />, category: "technical" },
     { name: "Teamwork", icon: <Brain size={24} />, category: "soft" },
     { name: "Problem Solving", icon: <Brain size={24} />, category: "soft" },
     { name: "Critical Thinking", icon: <Brain size={24} />, category: "soft" },
@@ -387,6 +387,19 @@ const Experience = () => {
                   <p className="text-gray-300">Recognized for curiosity, problem-solving, and a strong learning attitude.</p>
                 </motion.li>
               </ul>
+              
+              <div className="mt-6">
+                <motion.a 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="https://drive.google.com/file/d/1pgMv7k1dTSZC5QOWY_6QIR0Pl_B3cSga/view?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-gradient-to-r from-pink-500 to-violet-500 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300 inline-block"
+                >
+                  View
+                </motion.a>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -405,7 +418,8 @@ const Projects = () => {
         "Implemented CRUD operations to manage student records, including registration, updates, and deletions.",
         "Enhanced data retrieval and organization with structured storage and user-friendly interfaces."
       ],
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      githubLink: "https://github.com/JILLELLARAGHUNATH/Student-Management-System-.git"
     },
     {
       title: "Autonomous Car (Voice Control) Using Arduino",
@@ -425,7 +439,8 @@ const Projects = () => {
         "Implemented advanced segmentation techniques to differentiate weeds from crops efficiently.",
         "Utilized machine learning algorithms for precise classification and identification of weed-infested areas."
       ],
-      image: "https://media.istockphoto.com/id/1307187874/photo/rows-of-winter-wheat-in-the-foundation-stage-of-growth-taken-in-the-uk-in-march-on-a-sunny.jpg?s=612x612&w=0&k=20&c=EBMwlqLmG50q3MX630uLEFuwBedA1Z4Ivo7j55bbfUc="
+      image: "https://media.istockphoto.com/id/1307187874/photo/rows-of-winter-wheat-in-the-foundation-stage-of-growth-taken-in-the-uk-in-march-on-a-sunny.jpg?s=612x612&w=0&k=20&c=EBMwlqLmG50q3MX630uLEFuwBedA1Z4Ivo7j55bbfUc=",
+      githubLink: "https://github.com/JILLELLARAGHUNATH/weed-detection.git"
     }    
   ];
   
@@ -491,13 +506,27 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
           ))}
         </ul>
         
-       <motion.button 
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-4 py-2 bg-gradient-to-r from-pink-500 to-violet-500 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300"
-        >
-          View Details
-        </motion.button>
+        {project.githubLink ? (
+          <motion.a 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-gradient-to-r from-pink-500 to-violet-500 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300 inline-block"
+          >
+            View
+          </motion.a>
+        ) : (
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-4 py-2 bg-gradient-to-r from-pink-500 to-violet-500 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300"
+            disabled
+          >
+            View
+          </motion.button>
+        )}
       </div>
     </motion.div>
   );
@@ -509,7 +538,7 @@ const Education = () => {
       institution: "Kalasalingam Academy of Research and Education",
       degree: "Bachelor of Technology in Electronics and Communication Engineering",
       year: "Pursuing",
-      score: "CGPA: 7.88",
+      score: "CGPA: 7.87",
       location: "Tamil Nadu"
     },
     {
@@ -583,7 +612,24 @@ const Education = () => {
 };
 
 const Certifications = () => {
-  const certifications = ["NPTEL", "MATLAB", "PYTHON"];
+  const certifications = [
+    { 
+      name: "PYTHON", 
+      link: "https://www.hackerrank.com/certificates/iframe/c7ebcb4babaa" 
+    },
+    { 
+      name: "MATLAB", 
+      link: null 
+    },
+    { 
+      name: "SQL", 
+      link: "https://www.hackerrank.com/certificates/iframe/be1322f1ba4f" 
+    },
+    { 
+      name: "CSS", 
+      link: "https://www.hackerrank.com/certificates/iframe/a5fe2ca0471f" 
+    }
+  ];
   
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -616,14 +662,30 @@ const Certifications = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {certifications.map((cert, index) => (
                   <motion.div 
-                    key={cert}
+                    key={cert.name}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="p-4 bg-gradient-to-br from-pink-500/10 to-violet-500/10 rounded-xl border border-white/10 hover:border-pink-500/30 transition-colors text-center"
+                    className={`p-4 bg-gradient-to-br from-pink-500/10 to-violet-500/10 rounded-xl border border-white/10 hover:border-pink-500/30 transition-colors text-center ${cert.link ? 'cursor-pointer' : ''}`}
                   >
-                    <Award size={32} className="text-pink-400 mx-auto mb-2" />
-                    <h4 className="font-medium">{cert}</h4>
+                    {cert.link ? (
+                      <motion.a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="block"
+                      >
+                        <Award size={32} className="text-pink-400 mx-auto mb-2" />
+                        <h4 className="font-medium">{cert.name}</h4>
+                      </motion.a>
+                    ) : (
+                      <>
+                        <Award size={32} className="text-pink-400 mx-auto mb-2" />
+                        <h4 className="font-medium">{cert.name}</h4>
+                      </>
+                    )}
                   </motion.div>
                 ))}
               </div>
