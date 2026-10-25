@@ -1,800 +1,899 @@
-import { motion } from 'framer-motion';
+import { useState, type ReactNode } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  Phone, 
-  Code, 
-  Briefcase, 
-  Award, 
-  User, 
-  Cpu, 
-  Brain,
-  GraduationCap
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Award,
+  Briefcase,
+  CalendarDays,
+  Code2,
+  Github,
+  GraduationCap,
+  Linkedin,
+  LockKeyhole,
+  Mail,
+  Menu,
+  Phone,
+  UserRound,
+  X,
 } from 'lucide-react';
+
+const navigation = [
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Education', href: '#education' },
+  { label: 'Contact', href: '#contact' },
+];
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white">
+    <div className="portfolio-shell min-h-screen overflow-hidden">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Header />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Projects />
-      <Education />
-      <Certifications />
-      <Contact />
+      <main id="main">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Education />
+        <Certifications />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );
 }
 
-const Header = () => {
+function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-black/20 border-b border-white/10">
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-xl font-bold"
-        >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+    <header className="site-header sticky top-0 z-50">
+      <nav
+        aria-label="Main navigation"
+        className="container mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8"
+      >
+        <a className="brand-mark" href="#home" aria-label="Raghunath Jillella, home">
+          <span className="brand-monogram">RJ</span>
+          <span className="hidden text-sm font-semibold tracking-wide sm:inline">
             Raghunath Jillella
           </span>
-        </motion.div>
-        
-        <motion.ul 
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, staggerChildren: 0.1 }}
-          className="hidden md:flex space-x-8"
-        >
-          {['About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
-            <motion.li 
-              key={item}
-              whileHover={{ scale: 1.1 }}
-              className="hover:text-pink-400 transition-colors"
-            >
-              <a href={`#${item.toLowerCase()}`}>{item}</a>
-            </motion.li>
-          ))}
-        </motion.ul>
-      </nav>
-    </header>
-  );
-};
+        </a>
 
-const Hero = () => {
-  return (
-    <section className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
-      
-      <div className="container mx-auto px-6 z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="md:w-1/2"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              <span className="block">Hi, I'm</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-                Raghunath Jillella
-              </span>
-            </h1>
-            <h2 className="text-xl md:text-2xl mb-6 text-gray-300">Aspiring Software Developer</h2>
-            <p className="text-gray-300 mb-8 max-w-lg">
-              Passionate about programming and problem-solving with expertise in Python and MATLAB.
-              Looking to apply my skills to create innovative solutions and contribute to impactful projects.
-            </p>
-            
-            <div className="flex space-x-4">
-              <motion.a 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#contact" 
-                className="px-6 py-3 bg-gradient-to-r from-pink-500 to-violet-500 rounded-full font-medium hover:shadow-lg transition-all duration-300"
-              >
-                Contact Me
-              </motion.a>
-              <motion.a 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#projects" 
-                className="px-6 py-3 border border-white/30 rounded-full font-medium hover:bg-white/10 transition-all duration-300"
-              >
-                View Projects
-              </motion.a>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="md:w-1/2 flex justify-center"
-          >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
-              <img 
-                src="/raghunath.jpg"
-                alt="Raghunath Jillella" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const SectionTitle = ({ title }: { title: string }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  
-  return (
-    <motion.div 
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.6 }}
-      className="mb-12 text-center"
-    >
-      <h2 className="text-3xl md:text-4xl font-bold inline-block bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-        {title}
-      </h2>
-      <div className="mt-2 w-24 h-1 bg-gradient-to-r from-pink-500 to-violet-500 mx-auto rounded-full"></div>
-    </motion.div>
-  );
-};
-
-const About = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  
-  return (
-    <section id="about" className="py-20 relative">
-      <div className="container mx-auto px-6">
-        <SectionTitle title="About Me" />
-        
-        <motion.div 
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8 }}
-          className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 shadow-xl"
-        >
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/3 flex justify-center">
-              <div className="relative">
-                <User size={120} className="text-pink-400" />
-                <div className="absolute inset-0 bg-pink-500/20 rounded-full blur-2xl -z-10"></div>
-              </div>
-            </div>
-            
-            <div className="md:w-2/3">
-              <h3 className="text-2xl font-semibold mb-4">Career Objective</h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                Aspiring software developer with a strong foundation in Python and MATLAB, eager to apply programming skills
-                to real-world problem-solving. Passionate about learning emerging technologies and contributing to innovative projects.
-                Seeking an opportunity to enhance technical expertise, collaborate with dynamic teams, and develop solutions that drive
-                efficiency and innovation.
-              </p>
-              
-              <div className="flex flex-wrap gap-4">
-                <span className="px-4 py-2 bg-white/10 rounded-full text-sm">Problem Solver</span>
-                <span className="px-4 py-2 bg-white/10 rounded-full text-sm">Critical Thinker</span>
-                <span className="px-4 py-2 bg-white/10 rounded-full text-sm">Team Player</span>
-                <span className="px-4 py-2 bg-white/10 rounded-full text-sm">Continuous Learner</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-const Skills = () => {
-  const skills = [
-    { name: "Python", icon: <Code size={24} />, category: "technical" },
-    { name: "MATLAB", icon: <Code size={24} />, category: "technical" },
-    { name: "sql", icon: <Cpu size={24} />, category: "technical" },
-    { name: "HTML", icon: <Code size={24} />, category: "technical" },
-    { name: "CSS", icon: <Code size={24} />, category: "technical" },
-    { name: "Teamwork", icon: <Brain size={24} />, category: "soft" },
-    { name: "Problem Solving", icon: <Brain size={24} />, category: "soft" },
-    { name: "Critical Thinking", icon: <Brain size={24} />, category: "soft" },
-    { name: "Communication", icon: <Brain size={24} />, category: "soft" },
-    
-  ];
-  
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  
-  return (
-    <section id="skills" className="py-20 bg-gradient-to-b from-transparent to-black/30">
-      <div className="container mx-auto px-6">
-        <SectionTitle title="Skills" />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div 
-            ref={ref}
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-            transition={{ duration: 0.8 }}
-            className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 shadow-xl"
-          >
-            <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-              <Code size={24} className="text-pink-400" />
-              Technical Skills
-            </h3>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {skills.filter(skill => skill.category === "technical").map((skill, index) => (
-                <motion.div 
-                  key={skill.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-center gap-3"
-                >
-                  <div className="p-2 bg-gradient-to-br from-pink-500 to-violet-500 rounded-lg">
-                    {skill.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-medium">{skill.name}</h4>
-                    <div className="mt-1 w-full bg-white/10 rounded-full h-2">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        animate={inView ? { width: `${70 + Math.random() * 30}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: 0.3 + index * 0.1 }}
-                        className="h-full bg-gradient-to-r from-pink-500 to-violet-500 rounded-full"
-                      ></motion.div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            ref={ref}
-            initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-            transition={{ duration: 0.8 }}
-            className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 shadow-xl"
-          >
-            <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-              <Brain size={24} className="text-pink-400" />
-              Soft Skills
-            </h3>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {skills.filter(skill => skill.category === "soft").map((skill, index) => (
-                <motion.div 
-                  key={skill.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-center gap-3"
-                >
-                  <div className="p-2 bg-gradient-to-br from-pink-500 to-violet-500 rounded-lg">
-                    {skill.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-medium">{skill.name}</h4>
-                    <div className="mt-1 w-full bg-white/10 rounded-full h-2">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        animate={inView ? { width: `${70 + Math.random() * 30}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: 0.3 + index * 0.1 }}
-                        className="h-full bg-gradient-to-r from-pink-500 to-violet-500 rounded-full"
-                      ></motion.div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const Experience = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  
-  return (
-    <section id="experience" className="py-20">
-      <div className="container mx-auto px-6">
-        <SectionTitle title="Experience" />
-        
-        <motion.div 
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8 }}
-          className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 shadow-xl"
-        >
-          <div className="flex flex-col md:flex-row items-start gap-8">
-            <div className="md:w-1/3">
-              <div className="relative">
-                <Briefcase size={80} className="text-pink-400" />
-                <div className="absolute inset-0 bg-pink-500/20 rounded-full blur-2xl -z-10"></div>
-              </div>
-              <h3 className="text-xl font-semibold mt-4">Youngminds Technology Solutions Pvt Ltd</h3>
-              <p className="text-gray-400">MATLAB Image Processing - Intern</p>
-              <p className="text-gray-400">May 2024 - July 2024</p>
-            </div>
-            
-            <div className="md:w-2/3">
-              <h3 className="text-2xl font-semibold mb-4">Responsibilities & Achievements</h3>
-              <ul className="space-y-4">
-                <motion.li 
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="flex items-start gap-3"
-                >
-                  <div className="mt-1 min-w-6 h-6 bg-gradient-to-br from-pink-500 to-violet-500 rounded-full flex items-center justify-center">
-                    <span className="text-xs">✓</span>
-                  </div>
-                  <p className="text-gray-300">Worked on MATLAB Image Processing, meeting project objectives.</p>
-                </motion.li>
-                <motion.li 
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="flex items-start gap-3"
-                >
-                  <div className="mt-1 min-w-6 h-6 bg-gradient-to-br from-pink-500 to-violet-500 rounded-full flex items-center justify-center">
-                    <span className="text-xs">✓</span>
-                  </div>
-                  <p className="text-gray-300">Explored various image processing techniques and real-world applications.</p>
-                </motion.li>
-                <motion.li 
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="flex items-start gap-3"
-                >
-                  <div className="mt-1 min-w-6 h-6 bg-gradient-to-br from-pink-500 to-violet-500 rounded-full flex items-center justify-center">
-                    <span className="text-xs">✓</span>
-                  </div>
-                  <p className="text-gray-300">Recognized for curiosity, problem-solving, and a strong learning attitude.</p>
-                </motion.li>
-              </ul>
-              
-              <div className="mt-6">
-                <motion.a 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="https://drive.google.com/file/d/1pgMv7k1dTSZC5QOWY_6QIR0Pl_B3cSga/view?usp=drive_link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-gradient-to-r from-pink-500 to-violet-500 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300 inline-block"
-                >
-                  View
-                </motion.a>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-const Projects = () => {
-  const projects = [
-    {
-      title: "Student Management System",
-      technologies: "Python",
-      description: [
-        "Developed a Python-based Student Management System for efficient student data handling.",
-        "Implemented CRUD operations to manage student records, including registration, updates, and deletions.",
-        "Enhanced data retrieval and organization with structured storage and user-friendly interfaces."
-      ],
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      githubLink: "https://github.com/JILLELLARAGHUNATH/Student-Management-System-.git"
-    },
-    {
-      title: "Autonomous Car (Voice Control) Using Arduino",
-      technologies: "IOT-Sensors and Device",
-      description: [
-        "Designed and developed a voice-controlled autonomous car using Arduino and IoT sensors.",
-        "Integrated speech recognition modules to enable hands-free navigation.",
-        "Implemented sensor-based obstacle detection for real-time path correction and safety."
-      ],
-      image: "https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
-    },
-    {
-      title: "Weed Detection in Crops Using MATLAB",
-      technologies: "Image Processing, Machine Learning, MATLAB",
-      description: [
-        "Developed an image-processing-based system for detecting weeds in agricultural fields using MATLAB.",
-        "Implemented advanced segmentation techniques to differentiate weeds from crops efficiently.",
-        "Utilized machine learning algorithms for precise classification and identification of weed-infested areas."
-      ],
-      image: "https://media.istockphoto.com/id/1307187874/photo/rows-of-winter-wheat-in-the-foundation-stage-of-growth-taken-in-the-uk-in-march-on-a-sunny.jpg?s=612x612&w=0&k=20&c=EBMwlqLmG50q3MX630uLEFuwBedA1Z4Ivo7j55bbfUc=",
-      githubLink: "https://github.com/JILLELLARAGHUNATH/weed-detection.git"
-    }    
-  ];
-  
-  return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-black/30 to-transparent">
-      <div className="container mx-auto px-6">
-        <SectionTitle title="Projects" />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-interface Project {
-  title: string;
-  technologies: string;
-  description: string[];
-  image: string;
-  githubLink?: string;
-}
-
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  
-  return (
-    <motion.div 
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.8, delay: index * 0.2 }}
-      className="bg-white/5 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/10 shadow-xl group"
-    >
-      <div className="h-48 overflow-hidden">
-        <img 
-          src={project.image} 
-          alt={project.title} 
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-        />
-      </div>
-      
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-        <div className="mb-4">
-          <span className="px-3 py-1 bg-gradient-to-r from-pink-500/20 to-violet-500/20 rounded-full text-sm">
-            {project.technologies}
-          </span>
-        </div>
-        
-        <ul className="space-y-2 mb-4">
-          {project.description.map((item: string, i: number) => (
-            <motion.li 
-              key={i}
-              initial={{ opacity: 0, x: -10 }}
-              animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-              transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-              className="flex items-start gap-2 text-gray-300 text-sm"
-            >
-              <div className="mt-1 min-w-4 h-4 bg-gradient-to-br from-pink-500 to-violet-500 rounded-full flex items-center justify-center">
-                <span className="text-[10px]">✓</span>
-              </div>
-              <p>{item}</p>
-            </motion.li>
+        <ul className="hidden items-center gap-7 md:flex">
+          {navigation.map((item) => (
+            <li key={item.href}>
+              <a className="nav-link" href={item.href}>
+                {item.label}
+              </a>
+            </li>
           ))}
         </ul>
-        
-        {project.githubLink ? (
-          <motion.a 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href={project.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 bg-gradient-to-r from-pink-500 to-violet-500 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300 inline-block"
-          >
-            View
-          </motion.a>
-        ) : (
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-4 py-2 bg-gradient-to-r from-pink-500 to-violet-500 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300"
-            disabled
-          >
-            View
-          </motion.button>
-        )}
+
+        <a className="header-contact hidden md:inline-flex" href="#contact">
+          Let&apos;s talk <ArrowUpRight aria-hidden="true" size={15} />
+        </a>
+
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          className="menu-toggle md:hidden"
+          onClick={() => setMenuOpen((open) => !open)}
+          type="button"
+        >
+          {menuOpen ? <X aria-hidden="true" size={22} /> : <Menu aria-hidden="true" size={22} />}
+        </button>
+      </nav>
+
+      <div
+        className="mobile-navigation md:hidden"
+        hidden={!menuOpen}
+        id="mobile-navigation"
+      >
+        <ul className="container mx-auto max-w-6xl px-5 pb-5 sm:px-8">
+          {navigation.map((item) => (
+            <li key={item.href}>
+              <a
+                className="mobile-nav-link"
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+                <ArrowUpRight aria-hidden="true" size={16} />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
+    </header>
+  );
+}
+
+function Hero() {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <section
+      aria-labelledby="hero-title"
+      className="hero-section"
+      id="home"
+    >
+      <div className="hero-grid container mx-auto max-w-6xl px-5 sm:px-8">
+        <motion.div
+          animate={{ opacity: 1, y: 0 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.65 }}
+        >
+          <p className="eyebrow">
+            <span className="eyebrow-dot" />
+            Full Stack Developer | Python · Flask · JavaScript · SQL
+          </p>
+          <h1 className="hero-title" id="hero-title">
+            Hello, I&apos;m
+            <span className="hero-name">Raghunath Jillella.</span>
+          </h1>
+          <p className="hero-summary">
+            Full Stack Developer at Persevex in Bengaluru, building practical web
+            applications and data-driven workflows with an engineering mindset.
+          </p>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#projects">
+              Explore my work <ArrowUpRight aria-hidden="true" size={17} />
+            </a>
+            <a className="button button-secondary" href="#contact">
+              Get in touch
+            </a>
+          </div>
+          <div className="hero-meta">
+            <span>
+              <Briefcase aria-hidden="true" size={15} /> Persevex · Bengaluru, Karnataka, India
+            </span>
+            <span>
+              <GraduationCap aria-hidden="true" size={16} /> Electronics &amp; communication
+              engineering background
+            </span>
+          </div>
+        </motion.div>
+
+        <motion.div
+          animate={{ opacity: 1, scale: 1 }}
+          className="hero-portrait-wrap"
+          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.7, delay: 0.12 }}
+        >
+          <div className="portrait-orbit portrait-orbit-one" />
+          <div className="portrait-orbit portrait-orbit-two" />
+          <div className="hero-portrait">
+            <img
+              alt="Raghunath Jillella"
+              height="400"
+              src="/raghunath.jpg"
+              width="400"
+            />
+          </div>
+          <div className="portrait-note">
+            <span className="portrait-note-icon">
+              <UserRound aria-hidden="true" size={17} />
+            </span>
+            <span>
+              <strong>Curious by nature</strong>
+              <small>Always learning, always building</small>
+            </span>
+          </div>
+        </motion.div>
+      </div>
+      <a className="scroll-cue" href="#about">
+        <span>Scroll to explore</span>
+        <ArrowDown aria-hidden="true" size={15} />
+      </a>
+    </section>
+  );
+}
+
+function SectionHeading({
+  id,
+  label,
+  title,
+  description,
+}: {
+  id: string;
+  label: string;
+  title: string;
+  description?: string;
+}) {
+  return (
+    <div className="section-heading">
+      <p className="section-label">{label}</p>
+      <h2 id={id}>{title}</h2>
+      {description && <p className="section-description">{description}</p>}
+    </div>
+  );
+}
+
+function Reveal({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 });
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      animate={
+        inView || prefersReducedMotion
+          ? { opacity: 1, y: 0 }
+          : { opacity: 0, y: 20 }
+      }
+      className={className}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+      ref={ref}
+      transition={{ duration: 0.55, delay }}
+    >
+      {children}
     </motion.div>
   );
+}
+
+function About() {
+  return (
+    <section aria-labelledby="about-title" className="section section-light" id="about">
+      <div className="container mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionHeading
+          description="I am a Full Stack Developer at Persevex in Bengaluru, with an Electronics and Communication Engineering background. My work and project experience span web applications, Python, database-backed workflows, automation, and software problem-solving."
+          id="about-title"
+          label="A little about me"
+          title="Engineering perspective. Software curiosity."
+        />
+        <div className="about-grid">
+          <Reveal className="about-copy">
+            <h3>Building practical, maintainable applications.</h3>
+            <p>
+              As a Full Stack Developer at Persevex, I contribute to web application
+              features, responsive interfaces, server-side functionality, data
+              workflows, and internal application improvements.
+            </p>
+            <p>
+              My experience includes Python and Flask, browser-based interfaces,
+              SQL-backed application data, and document and spreadsheet workflows.
+              I also bring an engineering background from Kalasalingam Academy of
+              Research and Education and continue to develop my skills through
+              personal projects.
+            </p>
+            <a className="text-link" href="#experience">
+              See my experience <ArrowUpRight aria-hidden="true" size={16} />
+            </a>
+          </Reveal>
+          <Reveal className="about-facts" delay={0.1}>
+            <div className="fact-card">
+              <span className="fact-icon">
+                <Code2 aria-hidden="true" size={19} />
+              </span>
+              <div>
+                <h3>Software development</h3>
+                <p>Python, SQL, and web technologies</p>
+              </div>
+            </div>
+            <div className="fact-card">
+              <span className="fact-icon">
+                <Briefcase aria-hidden="true" size={19} />
+              </span>
+              <div>
+                <h3>Applied engineering</h3>
+                <p>MATLAB image processing and IoT projects</p>
+              </div>
+            </div>
+            <div className="fact-card">
+              <span className="fact-icon">
+                <GraduationCap aria-hidden="true" size={20} />
+              </span>
+              <div>
+                <h3>Electronics &amp; communication</h3>
+                <p>Kalasalingam Academy of Research and Education</p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Experience() {
+  return (
+    <section
+      aria-labelledby="experience-title"
+      className="section section-dark"
+      id="experience"
+    >
+      <div className="container mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionHeading
+          description="Full-stack application development at Persevex, alongside earlier internship experience."
+          id="experience-title"
+          label="Experience"
+          title="Professional experience."
+        />
+        <Reveal className="experience-card experience-card-current">
+          <div className="experience-date">
+            <span className="experience-icon">
+              <Briefcase aria-hidden="true" size={21} />
+            </span>
+            <span>April 2026 — Present</span>
+          </div>
+          <div className="experience-details">
+            <p className="experience-type">Current role · Full stack development</p>
+            <h3>Full Stack Developer</h3>
+            <p className="experience-company">
+              Persevex <span aria-hidden="true">·</span> Bengaluru, Karnataka, India
+            </p>
+            <p className="experience-summary">
+              Contributing to the development and maintenance of web applications,
+              frontend interfaces, backend functionality, database-driven workflows,
+              and internal business tools. Focused on maintainable features, data
+              integration, usability, and resolving technical issues.
+            </p>
+            <ul className="experience-list">
+              <li>
+                Develop application features across responsive browser interfaces
+                and server-side functionality.
+              </li>
+              <li>
+                Work with application data, forms, database-backed records, and
+                spreadsheet processing workflows.
+              </li>
+              <li>
+                Implement application logic, input validation, and error handling;
+                debug issues and support reliability and usability improvements.
+              </li>
+              <li>
+                Contribute to document and workflow automation, internal application
+                improvements, and maintainable code using version control.
+              </li>
+            </ul>
+            <ul aria-label="Technologies and workflows used in this role" className="experience-stack">
+              {[
+                'Python',
+                'Flask',
+                'HTML',
+                'CSS',
+                'JavaScript',
+                'SQL',
+                'PostgreSQL / Supabase',
+                'SQLite',
+                'CSV / Excel workflows',
+              ].map((skill) => (
+                <li key={skill}>{skill}</li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+        <Reveal className="experience-card">
+          <div className="experience-date">
+            <span className="experience-icon">
+              <Briefcase aria-hidden="true" size={21} />
+            </span>
+            <span>May — July 2024</span>
+          </div>
+          <div className="experience-details">
+            <p className="experience-type">Internship · Image processing</p>
+            <h3>
+              MATLAB Image Processing Intern
+            </h3>
+            <p className="experience-company">
+              Youngminds Technology Solutions Pvt Ltd
+            </p>
+            <ul className="experience-list">
+              <li>Worked on MATLAB image-processing tasks as part of the internship.</li>
+              <li>
+                Explored image-processing techniques and their real-world applications.
+              </li>
+            </ul>
+            <a
+              className="text-link"
+              href="https://drive.google.com/file/d/1pgMv7k1dTSZC5QOWY_6QIR0Pl_B3cSga/view?usp=drive_link"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              View supporting document <ArrowUpRight aria-hidden="true" size={16} />
+            </a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+type ProjectCategory = 'web' | 'python' | 'engineering' | 'private';
+
+type PublicProject = {
+  visibility: 'public';
+  title: string;
+  category: Exclude<ProjectCategory, 'private'>;
+  technologies: string;
+  description: string;
+  repository?: string;
+  image?: string;
+  imageAlt?: string;
+  icon?: ReactNode;
 };
 
-const Education = () => {
-  const education = [
-    {
-      institution: "Kalasalingam Academy of Research and Education",
-      degree: "Bachelor of Technology in Electronics and Communication Engineering",
-      year: "Pursuing",
-      score: "CGPA: 7.87",
-      location: "Tamil Nadu"
-    },
-    {
-      institution: "Deepthi Junior College",
-      degree: "12th std (HSC)",
-      year: "2020-2022",
-      score: "Percentage: 73%",
-      location: "Proddatur"
-    },
-    {
-      institution: "Sarada High School",
-      degree: "10th std (SSC)",
-      year: "2019-2020",
-      score: "CGPA: 10.0",
-      location: "Proddatur"
-    }
-  ];
-  
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  
+type PrivateProject = {
+  visibility: 'private';
+  title: string;
+  category: 'private';
+  description: string;
+  privacyNotice: string;
+  icon: ReactNode;
+};
+
+type Project = PublicProject | PrivateProject;
+
+const projects: Project[] = [
+  {
+    visibility: 'private',
+    title: 'Document Automation & Verification Platform',
+    category: 'private',
+    description:
+      'A document automation solution designed to streamline document generation, processing, and verification workflows.',
+    privacyNotice:
+      'Private company project — implementation details are not publicly available.',
+    icon: <LockKeyhole aria-hidden="true" size={42} />,
+  },
+  {
+    visibility: 'private',
+    title: 'Employee Operations Management Platform',
+    category: 'private',
+    description:
+      'An internal operations management solution designed to support employee-related workflows and administrative processes.',
+    privacyNotice:
+      'Private company project — implementation details are not publicly available.',
+    icon: <LockKeyhole aria-hidden="true" size={42} />,
+  },
+  {
+    visibility: 'public',
+    title: 'Hospital Appointment Scheduler',
+    category: 'web',
+    technologies: 'Next.js · TypeScript · Tailwind CSS',
+    description:
+      'A scheduling interface created for a frontend developer challenge, with doctor filters and day and week calendar views.',
+    repository: 'https://github.com/JILLELLARAGHUNATH/Hospital-Scheduler',
+    icon: <CalendarDays aria-hidden="true" size={42} />,
+  },
+  {
+    visibility: 'public',
+    title: 'Student Management System',
+    category: 'python',
+    technologies: 'Python',
+    description:
+      'A Python application for managing student records, with create, read, update, and delete operations.',
+    repository: 'https://github.com/JILLELLARAGHUNATH/Student-Management-System-',
+    image:
+      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    imageAlt: 'Laptop and programming workspace',
+  },
+  {
+    visibility: 'public',
+    title: 'Weed Detection in Crops',
+    category: 'engineering',
+    technologies: 'MATLAB · Image processing · Machine learning',
+    description:
+      'An image-processing project exploring segmentation and classification techniques to distinguish weeds from crops.',
+    repository: 'https://github.com/JILLELLARAGHUNATH/weed-detection',
+    image:
+      'https://media.istockphoto.com/id/1307187874/photo/rows-of-winter-wheat-in-the-foundation-stage-of-growth-taken-in-the-uk-in-march-on-a-sunny.jpg?s=612x612&w=0&k=20&c=EBMwlqLmG50q3MX630uLEFuwBedA1Z4Ivo7j55bbfUc=',
+    imageAlt: 'Rows of crops growing in a field',
+  },
+  {
+    visibility: 'public',
+    title: 'Voice-Controlled Autonomous Car',
+    category: 'engineering',
+    technologies: 'Arduino · IoT sensors',
+    description:
+      'An Arduino-based project combining voice control with sensor-based obstacle detection.',
+    image:
+      'https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80',
+    imageAlt: 'Close-up of a modern vehicle',
+  },
+  {
+    visibility: 'public',
+    title: 'Calculator Using Tkinter',
+    category: 'python',
+    technologies: 'Python · Tkinter',
+    description:
+      'A desktop calculator with common arithmetic operations, percentage calculations, parentheses, and a graphical interface.',
+    repository: 'https://github.com/JILLELLARAGHUNATH/Calculator-using-Tkinter',
+    icon: <Code2 aria-hidden="true" size={42} />,
+  },
+];
+
+const projectFilters: { value: 'all' | ProjectCategory; label: string }[] = [
+  { value: 'all', label: 'All projects' },
+  { value: 'web', label: 'Web' },
+  { value: 'python', label: 'Python' },
+  { value: 'engineering', label: 'Engineering' },
+  { value: 'private', label: 'Private / confidential' },
+];
+
+function Projects() {
+  const [activeFilter, setActiveFilter] = useState<(typeof projectFilters)[number]['value']>('all');
+  const visibleProjects = projects.filter(
+    (project) => activeFilter === 'all' || project.category === activeFilter,
+  );
+
   return (
-    <section id="education" className="py-20">
-      <div className="container mx-auto px-6">
-        <SectionTitle title="Education" />
-        
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-pink-500 to-violet-500 rounded-full"></div>
-          
-          {education.map((edu, index) => (
-            <motion.div 
-              key={index}
-              ref={ref}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className={`flex flex-col md:flex-row items-center gap-8 mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-            >
-              <div className="md:w-1/2 flex justify-center">
-                <div className="relative p-6 bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 shadow-xl max-w-md">
-                  <div className="absolute top-1/2 -translate-y-1/2 w-6 h-6 bg-gradient-to-br from-pink-500 to-violet-500 rounded-full z-10 
-                    ${index % 2 === 0 ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'}"></div>
-                  
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-gradient-to-br from-pink-500/20 to-violet-500/20 rounded-lg">
-                      <GraduationCap size={24} className="text-pink-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold">{edu.institution}</h3>
-                      <p className="text-gray-400 text-sm">{edu.location}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="ml-14">
-                    <p className="text-gray-300 mb-1">{edu.degree}</p>
-                    <p className="text-gray-400 text-sm mb-2">{edu.year}</p>
-                    <p className="text-pink-400 font-medium">{edu.score}</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="md:w-1/2"></div>
-            </motion.div>
+    <section aria-labelledby="projects-title" className="section section-light" id="projects">
+      <div className="container mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionHeading
+          description="Public personal projects alongside clearly identified private company work."
+          id="projects-title"
+          label="Selected work"
+          title="Projects built to solve problems."
+        />
+        <div aria-label="Filter projects by category" className="project-filters" role="group">
+          {projectFilters.map((filter) => {
+            const count =
+              filter.value === 'all'
+                ? projects.length
+                : projects.filter((project) => project.category === filter.value).length;
+
+            return (
+              <button
+                aria-pressed={activeFilter === filter.value}
+                className={`project-filter${activeFilter === filter.value ? ' is-active' : ''}`}
+                key={filter.value}
+                onClick={() => setActiveFilter(filter.value)}
+                type="button"
+              >
+                {filter.label} <span>{count}</span>
+              </button>
+            );
+          })}
+        </div>
+        <div className="project-grid">
+          {visibleProjects.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
       </div>
     </section>
   );
-};
+}
 
-const Certifications = () => {
-  const certifications = [
-    { 
-      name: "PYTHON", 
-      link: "https://www.hackerrank.com/certificates/iframe/c7ebcb4babaa" 
-    },
-    { 
-      name: "MATLAB", 
-      link: null 
-    },
-    { 
-      name: "SQL", 
-      link: "https://www.hackerrank.com/certificates/iframe/be1322f1ba4f" 
-    },
-    { 
-      name: "CSS", 
-      link: "https://www.hackerrank.com/certificates/iframe/a5fe2ca0471f" 
-    }
-  ];
-  
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const isPrivate = project.visibility === 'private';
+
   return (
-    <section id="certifications" className="py-20 bg-gradient-to-b from-transparent to-black/30">
-      <div className="container mx-auto px-6">
-        <SectionTitle title="Certifications" />
-        
-        <motion.div 
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8 }}
-          className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 shadow-xl"
-        >
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/3 flex justify-center">
-              <div className="relative">
-                <Award size={100} className="text-pink-400" />
-                <div className="absolute inset-0 bg-pink-500/20 rounded-full blur-2xl -z-10"></div>
-              </div>
-            </div>
-            
-            <div className="md:w-2/3">
-              <h3 className="text-2xl font-semibold mb-6">Professional Certifications</h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {certifications.map((cert, index) => (
-                  <motion.div 
-                    key={cert.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`p-4 bg-gradient-to-br from-pink-500/10 to-violet-500/10 rounded-xl border border-white/10 hover:border-pink-500/30 transition-colors text-center ${cert.link ? 'cursor-pointer' : ''}`}
-                  >
-                    {cert.link ? (
-                      <motion.a
-                        href={cert.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="block"
-                      >
-                        <Award size={32} className="text-pink-400 mx-auto mb-2" />
-                        <h4 className="font-medium">{cert.name}</h4>
-                      </motion.a>
-                    ) : (
-                      <>
-                        <Award size={32} className="text-pink-400 mx-auto mb-2" />
-                        <h4 className="font-medium">{cert.name}</h4>
-                      </>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+    <Reveal
+      className={`project-card${isPrivate ? ' project-card-private' : ''}`}
+      delay={index * 0.06}
+    >
+      <div
+        className={`project-visual ${
+          isPrivate ? 'project-visual-private' : project.image ? '' : 'project-visual-art'
+        }`}
+      >
+        {!isPrivate && project.image ? (
+          <img
+            alt={project.imageAlt}
+            decoding="async"
+            height="280"
+            loading="lazy"
+            src={project.image}
+            width="560"
+          />
+        ) : (
+          <div className="project-artwork">
+            <span className="project-artwork-glow" />
+            {project.icon}
+            <span className="project-artwork-label">
+              {isPrivate ? 'Confidential company work' : project.category}
+            </span>
           </div>
-        </motion.div>
+        )}
+        {isPrivate ? (
+          <span className="project-private-badge">
+            <LockKeyhole aria-hidden="true" size={13} />
+            Private / Confidential — Company Project
+          </span>
+        ) : (
+          <span className="project-category">{project.category}</span>
+        )}
       </div>
-    </section>
+      <div className="project-content">
+        {isPrivate ? (
+          <p className="project-private-type">Private Company Project</p>
+        ) : (
+          <p className="project-technologies">{project.technologies}</p>
+        )}
+        <h3>{project.title}</h3>
+        <p className="project-description">{project.description}</p>
+        {isPrivate ? (
+          <p className="project-privacy-notice">
+            <LockKeyhole aria-hidden="true" size={15} />
+            Source code is private. {project.privacyNotice}
+          </p>
+        ) : project.repository ? (
+          <a
+            className="project-link project-github-button"
+            href={project.repository}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Github aria-hidden="true" size={16} />
+            View GitHub repository <ArrowUpRight aria-hidden="true" size={15} />
+          </a>
+        ) : (
+          <span className="project-link-unavailable">
+            Source repository not listed
+          </span>
+        )}
+      </div>
+    </Reveal>
   );
-};
+}
 
-const Contact = () => {
-  const contactInfo = [
-    { icon: <Phone size={24} />, text: "+91 8309900520", href: "tel:+918309900520" },
-    { icon: <Mail size={24} />, text: "jillellaraghunath@gmail.com", href: "mailto:jillellaraghunath@gmail.com" },
-    { icon: <Linkedin size={24} />, text: "LinkedIn", href: "https://www.linkedin.com/in/jillella-raghunath-ece-a69555268" },
-    { icon: <Github size={24} />, text: "Github", href: "https://github.com/JILLELLARAGHUNATH" }
-  ];
-  
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  
+const skillGroups = [
+  {
+    title: 'Professional · Application development',
+    skills: ['Python', 'Flask', 'JavaScript'],
+    icon: <Code2 aria-hidden="true" size={19} />,
+  },
+  {
+    title: 'Professional · Frontend',
+    skills: ['HTML5', 'CSS3', 'JavaScript'],
+    icon: <UserRound aria-hidden="true" size={19} />,
+  },
+  {
+    title: 'Professional · Data & workflows',
+    skills: ['SQL', 'PostgreSQL / Supabase', 'SQLite', 'CSV / Excel processing'],
+    icon: <Briefcase aria-hidden="true" size={19} />,
+  },
+  {
+    title: 'Personal projects · Web',
+    skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
+    icon: <Code2 aria-hidden="true" size={19} />,
+  },
+  {
+    title: 'Personal projects · Tools',
+    skills: ['Git', 'GitHub', 'npm', 'Vite', 'Vercel'],
+    icon: <Briefcase aria-hidden="true" size={19} />,
+  },
+  {
+    title: 'Engineering & academic projects',
+    skills: ['MATLAB', 'Image processing', 'Arduino', 'IoT sensors', 'Python'],
+    icon: <Briefcase aria-hidden="true" size={19} />,
+  },
+];
+
+function Skills() {
   return (
-    <section id="contact" className="py-20">
-      <div className="container mx-auto px-6">
-        <SectionTitle title="Contact Me" />
-        
-        <motion.div 
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8 }}
-          className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 shadow-xl"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Get In Touch</h3>
-              <p className="text-gray-300 mb-8">
-                Feel free to reach out to me for any opportunities, collaborations, or just to say hello!
-                I'm always open to discussing new projects and ideas.
-              </p>
-              
-              <div className="space-y-4">
-                {contactInfo.map((contact, index) => (
-                  <motion.a 
-                    key={index}
-                    href={contact.href}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex items-center gap-4 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
-                  >
-                    <div className="p-2 bg-gradient-to-br from-pink-500 to-violet-500 rounded-lg">
-                      {contact.icon}
-                    </div>
-                    <span>{contact.text}</span>
-                  </motion.a>
+    <section aria-labelledby="skills-title" className="section section-dark" id="skills">
+      <div className="container mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionHeading
+          description="Professional tools are separated from technologies demonstrated through personal and engineering projects."
+          id="skills-title"
+          label="My toolkit"
+          title="Skills I put into practice."
+        />
+        <div className="skills-grid">
+          {skillGroups.map((group, index) => (
+            <Reveal className="skill-card" delay={index * 0.08} key={group.title}>
+              <span className="skill-icon">{group.icon}</span>
+              <h3>{group.title}</h3>
+              <ul>
+                {group.skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
                 ))}
-              </div>
-            </div>
-            
-            
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-const Footer = () => {
-  return (
-    <footer className="py-8 bg-black/50 border-t border-white/10">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-4 md:mb-0"
-          >
-            <p className="text-gray-400">© 2025 Raghunath Jillella. All rights reserved.</p>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex space-x-4"
-          >
-            <a href="https://github.com/JILLELLARAGHUNATH" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors">
-              <Github size={20} />
-            </a>
-            <a href="https://www.linkedin.com/in/jillella-raghunath-ece-a69555268" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors">
-              <Linkedin size={20} />
-            </a>
-            <a href="mailto:jillellaraghunath@gmail.com" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors">
-              <Mail size={20} />
-            </a>
-          </motion.div>
+              </ul>
+            </Reveal>
+          ))}
         </div>
+        <p className="skills-note">
+          Skills are grouped by professional or project context and are not proficiency ratings.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+const education = [
+  {
+    institution: 'Kalasalingam Academy of Research and Education',
+    degree: 'Bachelor of Technology in Electronics and Communication Engineering',
+    detail: 'CGPA: 7.87',
+    location: 'Tamil Nadu',
+  },
+  {
+    institution: 'Deepthi Junior College',
+    degree: '12th standard (HSC)',
+    year: '2020–2022',
+    detail: 'Percentage: 73%',
+    location: 'Proddatur',
+  },
+  {
+    institution: 'Sarada High School',
+    degree: '10th standard (SSC)',
+    year: '2019–2020',
+    detail: 'CGPA: 10.0',
+    location: 'Proddatur',
+  },
+];
+
+function Education() {
+  return (
+    <section
+      aria-labelledby="education-title"
+      className="section section-light"
+      id="education"
+    >
+      <div className="container mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionHeading
+          description="My academic background, as listed in the existing portfolio."
+          id="education-title"
+          label="Education"
+          title="Learning that shapes my work."
+        />
+        <div className="education-list">
+          {education.map((item, index) => (
+            <Reveal className="education-card" delay={index * 0.06} key={item.institution}>
+              <span className="education-icon">
+                <GraduationCap aria-hidden="true" size={21} />
+              </span>
+              <div className="education-copy">
+                <p className="education-location">{item.location}</p>
+                <h3>{item.institution}</h3>
+                <p>{item.degree}</p>
+              </div>
+              <div className="education-meta">
+                <strong>{item.detail}</strong>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const certifications = [
+  {
+    name: 'Python',
+    issuer: 'HackerRank',
+    link: 'https://www.hackerrank.com/certificates/iframe/c7ebcb4babaa',
+  },
+  {
+    name: 'SQL',
+    issuer: 'HackerRank',
+    link: 'https://www.hackerrank.com/certificates/iframe/be1322f1ba4f',
+  },
+  {
+    name: 'CSS',
+    issuer: 'HackerRank',
+    link: 'https://www.hackerrank.com/certificates/iframe/a5fe2ca0471f',
+  },
+];
+
+function Certifications() {
+  return (
+    <section
+      aria-labelledby="certifications-title"
+      className="section section-light section-compact"
+      id="certifications"
+    >
+      <div className="container mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionHeading
+          id="certifications-title"
+          label="Certifications"
+          title="Courses and credentials."
+        />
+        <div className="certification-grid">
+          {certifications.map((certification, index) => (
+            <Reveal
+              className="certification-card"
+              delay={index * 0.05}
+              key={certification.name}
+            >
+              <span className="certification-icon">
+                <Award aria-hidden="true" size={20} />
+              </span>
+              <span>
+                <strong>{certification.name}</strong>
+                <small>{certification.issuer}</small>
+              </span>
+              {certification.link && (
+                <a
+                  aria-label={`View ${certification.name} certificate`}
+                  className="certification-link"
+                  href={certification.link}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <ArrowUpRight aria-hidden="true" size={17} />
+                </a>
+              )}
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section aria-labelledby="contact-title" className="section contact-section" id="contact">
+      <div className="container mx-auto max-w-6xl px-5 sm:px-8">
+        <Reveal className="contact-panel">
+          <div>
+            <p className="section-label">Contact</p>
+            <h2 id="contact-title">Have a project or opportunity in mind?</h2>
+            <p>
+              I&apos;m open to discussing software opportunities, collaborations,
+              and ideas. Reach out using the contact details below.
+            </p>
+          </div>
+          <div className="contact-links">
+            <a href="mailto:jillellaraghunath@gmail.com">
+              <Mail aria-hidden="true" size={18} />
+              <span>jillellaraghunath@gmail.com</span>
+              <ArrowUpRight aria-hidden="true" size={15} />
+            </a>
+            <a href="tel:+918309900520">
+              <Phone aria-hidden="true" size={18} />
+              <span>+91 8309900520</span>
+              <ArrowUpRight aria-hidden="true" size={15} />
+            </a>
+            <a
+              href="https://github.com/JILLELLARAGHUNATH"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Github aria-hidden="true" size={18} />
+              <span>GitHub</span>
+              <ArrowUpRight aria-hidden="true" size={15} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jillella-raghunath-ece-a69555268"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Linkedin aria-hidden="true" size={18} />
+              <span>LinkedIn</span>
+              <ArrowUpRight aria-hidden="true" size={15} />
+            </a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="site-footer">
+      <div className="container mx-auto flex max-w-6xl flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <a className="brand-mark footer-brand" href="#home">
+          <span className="brand-monogram">RJ</span>
+          <span>Raghunath Jillella</span>
+        </a>
+        <p>© {new Date().getFullYear()} Raghunath Jillella</p>
+        <a className="back-to-top" href="#home">
+          Back to top <ArrowUpRight aria-hidden="true" size={14} />
+        </a>
       </div>
     </footer>
   );
-};
+}
 
 export default App;
