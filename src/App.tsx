@@ -13,7 +13,6 @@ import {
   Brain,
   GraduationCap
 } from 'lucide-react';
-import profileImage from './images/raghunath.jpg';
 
 function App() {
   return (
@@ -125,7 +124,7 @@ const Hero = () => {
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
               <img 
-                src={profileImage} 
+                src="/raghunath.jpg"
                 alt="Raghunath Jillella" 
                 className="w-full h-full object-cover"
               />
@@ -213,10 +212,8 @@ const Skills = () => {
     { name: "Python", icon: <Code size={24} />, category: "technical" },
     { name: "MATLAB", icon: <Code size={24} />, category: "technical" },
     { name: "sql", icon: <Cpu size={24} />, category: "technical" },
-  // { name: "PowerBI", icon: <Cpu size={24} />, category: "technical" },
     { name: "HTML", icon: <Code size={24} />, category: "technical" },
     { name: "CSS", icon: <Code size={24} />, category: "technical" },
-  // { name: "C (Basics)", icon: <Code size={24} />, category: "technical" },
     { name: "Teamwork", icon: <Brain size={24} />, category: "soft" },
     { name: "Problem Solving", icon: <Brain size={24} />, category: "soft" },
     { name: "Critical Thinking", icon: <Brain size={24} />, category: "soft" },

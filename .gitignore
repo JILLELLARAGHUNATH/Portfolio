@@ -24,4 +24,9 @@ dist-ssr
 *.sln
 *.sw?
 
-.env
+# Local environment files (commit only a secret-free example, if needed)
+.env*
+!.env.example
+
+# Vercel local project metadata
+.vercel
