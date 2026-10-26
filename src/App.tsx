@@ -6,12 +6,10 @@ import {
   ArrowUpRight,
   Award,
   Briefcase,
-  CalendarDays,
   Code2,
   Github,
   GraduationCap,
   Linkedin,
-  LockKeyhole,
   Mail,
   Menu,
   Phone,
@@ -337,28 +335,17 @@ function Experience() {
             <p className="experience-company">
               Persevex <span aria-hidden="true">·</span> Bengaluru, Karnataka, India
             </p>
-            <p className="experience-summary">
-              Contributing to the development and maintenance of web applications,
-              frontend interfaces, backend functionality, database-driven workflows,
-              and internal business tools. Focused on maintainable features, data
-              integration, usability, and resolving technical issues.
-            </p>
             <ul className="experience-list">
               <li>
-                Develop application features across responsive browser interfaces
-                and server-side functionality.
+                Develop and maintain web applications and internal business tools.
               </li>
               <li>
-                Work with application data, forms, database-backed records, and
-                spreadsheet processing workflows.
+                Build frontend interfaces, backend functionality, database-driven
+                features, and data workflows.
               </li>
               <li>
-                Implement application logic, input validation, and error handling;
-                debug issues and support reliability and usability improvements.
-              </li>
-              <li>
-                Contribute to document and workflow automation, internal application
-                improvements, and maintainable code using version control.
+                Implement features, validate data, fix bugs, and improve usability
+                and reliability.
               </li>
             </ul>
             <ul aria-label="Technologies and workflows used in this role" className="experience-stack">
@@ -371,7 +358,7 @@ function Experience() {
                 'SQL',
                 'PostgreSQL / Supabase',
                 'SQLite',
-                'CSV / Excel workflows',
+                'CSV / Excel',
               ].map((skill) => (
                 <li key={skill}>{skill}</li>
               ))}
@@ -433,8 +420,8 @@ type PrivateProject = {
   title: string;
   category: 'private';
   description: string;
-  privacyNotice: string;
-  icon: ReactNode;
+  image: string;
+  imageAlt: string;
 };
 
 type Project = PublicProject | PrivateProject;
@@ -445,20 +432,20 @@ const projects: Project[] = [
     title: 'Document Automation & Verification Platform',
     category: 'private',
     description:
-      'A document automation solution designed to streamline document generation, processing, and verification workflows.',
-    privacyNotice:
-      'Private company project — implementation details are not publicly available.',
-    icon: <LockKeyhole aria-hidden="true" size={42} />,
+      'A document automation solution for document generation, processing, and verification workflows.',
+    image: '/project-images/document-workflow.svg',
+    imageAlt:
+      'Conceptual illustration of a private document workflow, with a document preview, metadata, verification steps, and record statuses; no company data shown.',
   },
   {
     visibility: 'private',
     title: 'Employee Operations Management Platform',
     category: 'private',
     description:
-      'An internal operations management solution designed to support employee-related workflows and administrative processes.',
-    privacyNotice:
-      'Private company project — implementation details are not publicly available.',
-    icon: <LockKeyhole aria-hidden="true" size={42} />,
+      'An internal operations management solution supporting employee-related workflows and administrative processes.',
+    image: '/project-images/employee-operations.svg',
+    imageAlt:
+      'Conceptual illustration of a private employee operations dashboard with sample profiles, attendance statuses, and administrative summaries; no company data shown.',
   },
   {
     visibility: 'public',
@@ -468,7 +455,9 @@ const projects: Project[] = [
     description:
       'A scheduling interface created for a frontend developer challenge, with doctor filters and day and week calendar views.',
     repository: 'https://github.com/JILLELLARAGHUNATH/Hospital-Scheduler',
-    icon: <CalendarDays aria-hidden="true" size={42} />,
+    image: '/project-images/hospital-scheduler.svg',
+    imageAlt:
+      'Interface illustration based on the Hospital Appointment Scheduler project, showing a doctor selector, day calendar, appointment entries, and schedule statuses; not a product screenshot.',
   },
   {
     visibility: 'public',
@@ -513,7 +502,9 @@ const projects: Project[] = [
     description:
       'A desktop calculator with common arithmetic operations, percentage calculations, parentheses, and a graphical interface.',
     repository: 'https://github.com/JILLELLARAGHUNATH/Calculator-using-Tkinter',
-    icon: <Code2 aria-hidden="true" size={42} />,
+    image: '/project-images/calculator-tkinter.svg',
+    imageAlt:
+      'Interface illustration based on the Python Tkinter calculator, showing its desktop window, expression display, clear key, parentheses, percent, and numeric keypad; not a product screenshot.',
   },
 ];
 
@@ -574,16 +565,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   const isPrivate = project.visibility === 'private';
 
   return (
-    <Reveal
-      className={`project-card${isPrivate ? ' project-card-private' : ''}`}
-      delay={index * 0.06}
-    >
-      <div
-        className={`project-visual ${
-          isPrivate ? 'project-visual-private' : project.image ? '' : 'project-visual-art'
-        }`}
-      >
-        {!isPrivate && project.image ? (
+    <Reveal className="project-card" delay={index * 0.06}>
+      <div className={`project-visual ${getProjectVisualClass(project)}`}>
+        {project.image ? (
           <img
             alt={project.imageAlt}
             decoding="async"
@@ -595,35 +579,21 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         ) : (
           <div className="project-artwork">
             <span className="project-artwork-glow" />
-            {project.icon}
-            <span className="project-artwork-label">
-              {isPrivate ? 'Confidential company work' : project.category}
-            </span>
+            {'icon' in project && project.icon}
+            <span className="project-artwork-label">{project.category}</span>
           </div>
         )}
-        {isPrivate ? (
-          <span className="project-private-badge">
-            <LockKeyhole aria-hidden="true" size={13} />
-            Private / Confidential — Company Project
-          </span>
-        ) : (
+        {!isPrivate && (
           <span className="project-category">{project.category}</span>
         )}
       </div>
       <div className="project-content">
-        {isPrivate ? (
-          <p className="project-private-type">Private Company Project</p>
-        ) : (
+        {!isPrivate && (
           <p className="project-technologies">{project.technologies}</p>
         )}
         <h3>{project.title}</h3>
         <p className="project-description">{project.description}</p>
-        {isPrivate ? (
-          <p className="project-privacy-notice">
-            <LockKeyhole aria-hidden="true" size={15} />
-            Source code is private. {project.privacyNotice}
-          </p>
-        ) : project.repository ? (
+        {!isPrivate && project.repository ? (
           <a
             className="project-link project-github-button"
             href={project.repository}
@@ -633,14 +603,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <Github aria-hidden="true" size={16} />
             View GitHub repository <ArrowUpRight aria-hidden="true" size={15} />
           </a>
-        ) : (
+        ) : !isPrivate ? (
           <span className="project-link-unavailable">
             Source repository not listed
           </span>
-        )}
+        ) : null}
       </div>
     </Reveal>
   );
+}
+
+function getProjectVisualClass(project: Project) {
+  return project.image ? '' : 'project-visual-art';
 }
 
 const skillGroups = [

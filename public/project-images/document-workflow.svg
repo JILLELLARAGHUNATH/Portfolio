@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F2FA"/>
+      <stop offset="1" stop-color="#EBE6F4"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8060B8"/>
+      <stop offset="1" stop-color="#A98BDA"/>
+    </linearGradient>
+    <filter id="shadow" x="24" y="22" width="1152" height="640" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="12"/>
+      <feGaussianBlur stdDeviation="14"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0.18 0 0 0 0 0.13 0 0 0 0 0.25 0 0 0 0.12 0"/>
+      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+  <path fill="url(#background)" d="M0 0h1200v675H0z"/>
+  <circle cx="1110" cy="87" r="174" fill="#D9C9F1" fill-opacity=".3"/>
+  <circle cx="94" cy="634" r="152" fill="#fff" fill-opacity=".58"/>
+  <g filter="url(#shadow)">
+    <rect x="54" y="44" width="1092" height="585" rx="19" fill="#fff"/>
+    <path d="M73 44h1054a19 19 0 0 1 19 19v45H54V63a19 19 0 0 1 19-19Z" fill="#FBFAFD"/>
+    <path d="M54 108h1092" stroke="#ECE8F1"/>
+    <circle cx="79" cy="76" r="6" fill="#D9D2E2"/>
+    <circle cx="101" cy="76" r="6" fill="#D9D2E2"/>
+    <circle cx="123" cy="76" r="6" fill="#D9D2E2"/>
+    <rect x="161" y="64" width="17" height="23" rx="3" fill="url(#accent)"/>
+    <path d="M166 70h7m-7 4h7m-7 4h5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+    <text x="188" y="81" fill="#393342" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700">Document workspace</text>
+    <rect x="951" y="60" width="167" height="31" rx="9" fill="#F4F0FA"/>
+    <circle cx="970" cy="75.5" r="5" fill="#9474C8"/>
+    <text x="983" y="80" fill="#6A548B" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="600">Workflow overview</text>
+    <path d="M54 108h184v521H73a19 19 0 0 1-19-19V108Z" fill="#FBFAFD"/>
+    <path d="M238 108v521" stroke="#ECE8F1"/>
+    <text x="76" y="145" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2">WORKSPACE</text>
+    <rect x="69" y="160" width="153" height="37" rx="9" fill="#F1EBF9"/>
+    <rect x="82" y="172" width="13" height="14" rx="2" stroke="#8060B8" stroke-width="1.6"/>
+    <path d="M85 176h7m-7 4h7" stroke="#8060B8" stroke-width="1.4" stroke-linecap="round"/>
+    <text x="105" y="184" fill="#654B8C" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="700">All documents</text>
+    <text x="82" y="222" fill="#696371" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12">In review</text>
+    <circle cx="204" cy="218" r="11" fill="#F5EEDC"/>
+    <text x="200" y="222" fill="#A87824" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700">4</text>
+    <text x="82" y="255" fill="#696371" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12">Verified</text>
+    <circle cx="204" cy="251" r="11" fill="#E7F4EC"/>
+    <text x="200" y="255" fill="#32835B" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700">8</text>
+    <path d="M72 278h148" stroke="#ECE8F1"/>
+    <text x="76" y="304" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2">TOOLS</text>
+    <text x="82" y="334" fill="#696371" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12">Templates</text>
+    <text x="82" y="366" fill="#696371" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12">Activity log</text>
+    <circle cx="84" cy="591" r="15" fill="#EAE3F4"/>
+    <text x="79" y="595" fill="#73579F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700">UI</text>
+    <text x="108" y="589" fill="#4C4654" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="600">Illustrative sample</text>
+    <text x="108" y="604" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">No company data</text>
+    <text x="267" y="145" fill="#292532" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="700">Document processing</text>
+    <text x="267" y="165" fill="#87818F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11">Review records and follow each document through verification.</text>
+    <rect x="267" y="183" width="261" height="65" rx="11" fill="#FBFAFD" stroke="#EEEAF2"/>
+    <circle cx="291" cy="215" r="15" fill="#EFE9F8"/>
+    <path d="M286 208h8l4 4v10h-12v-14Z" stroke="#8060B8" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M294 208v4h4" stroke="#8060B8" stroke-width="1.4"/>
+    <text x="316" y="210" fill="#8B8592" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10">Documents in queue</text>
+    <text x="316" y="231" fill="#35303C" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" font-weight="700">12</text>
+    <rect x="540" y="183" width="261" height="65" rx="11" fill="#FBFAFD" stroke="#EEEAF2"/>
+    <circle cx="565" cy="215" r="15" fill="#FCF2DF"/>
+    <path d="M565 206v9l6 3" stroke="#C58B2D" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="565" cy="215" r="9" stroke="#C58B2D" stroke-width="1.6"/>
+    <text x="590" y="210" fill="#8B8592" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10">Awaiting review</text>
+    <text x="590" y="231" fill="#35303C" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" font-weight="700">04</text>
+    <rect x="813" y="183" width="302" height="65" rx="11" fill="#FBFAFD" stroke="#EEEAF2"/>
+    <circle cx="838" cy="215" r="15" fill="#E8F4EC"/>
+    <path d="m831 215 5 5 9-10" stroke="#39865E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="863" y="210" fill="#8B8592" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10">Verified this week</text>
+    <text x="863" y="231" fill="#35303C" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" font-weight="700">08</text>
+    <rect x="267" y="264" width="397" height="235" rx="12" fill="#FBFAFD" stroke="#EEEAF2"/>
+    <text x="285" y="289" fill="#4B4552" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="700">Document preview</text>
+    <rect x="285" y="303" width="361" height="178" rx="7" fill="#F0EDF4"/>
+    <rect x="373" y="313" width="185" height="157" rx="4" fill="#fff" stroke="#E5E0EA"/>
+    <rect x="389" y="327" width="56" height="8" rx="4" fill="#9B7BCB"/>
+    <rect x="389" y="344" width="150" height="5" rx="2.5" fill="#E6E2EB"/>
+    <rect x="389" y="355" width="132" height="5" rx="2.5" fill="#E6E2EB"/>
+    <rect x="389" y="375" width="154" height="1" fill="#EEEAF2"/>
+    <rect x="389" y="385" width="39" height="5" rx="2.5" fill="#C8C1D0"/>
+    <rect x="438" y="385" width="90" height="5" rx="2.5" fill="#E6E2EB"/>
+    <rect x="389" y="399" width="39" height="5" rx="2.5" fill="#C8C1D0"/>
+    <rect x="438" y="399" width="90" height="5" rx="2.5" fill="#E6E2EB"/>
+    <rect x="389" y="413" width="39" height="5" rx="2.5" fill="#C8C1D0"/>
+    <rect x="438" y="413" width="90" height="5" rx="2.5" fill="#E6E2EB"/>
+    <rect x="389" y="435" width="54" height="19" rx="5" fill="#EAF4EC"/>
+    <path d="m397 444 3 3 5-6" stroke="#37845B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="409" y="447" fill="#37845B" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="8" font-weight="700">CHECKED</text>
+    <rect x="678" y="264" width="437" height="133" rx="12" fill="#fff" stroke="#EEEAF2"/>
+    <text x="697" y="289" fill="#4B4552" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="700">Record details</text>
+    <text x="697" y="316" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">DOCUMENT ID</text>
+    <text x="697" y="333" fill="#4A4450" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="600">DOC-001</text>
+    <text x="842" y="316" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">CATEGORY</text>
+    <text x="842" y="333" fill="#4A4450" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="600">General form</text>
+    <text x="984" y="316" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">LAST UPDATED</text>
+    <text x="984" y="333" fill="#4A4450" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="600">Today, 10:42</text>
+    <path d="M697 348h397" stroke="#F0EDF3"/>
+    <text x="697" y="373" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">PROCESS</text>
+    <rect x="751" y="357" width="94" height="23" rx="11.5" fill="#F5EEDC"/>
+    <circle cx="764" cy="368.5" r="3.5" fill="#C28B32"/>
+    <text x="773" y="372" fill="#95691F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="600">Pending review</text>
+    <rect x="859" y="357" width="72" height="23" rx="11.5" fill="#E8F4EC"/>
+    <circle cx="873" cy="368.5" r="3.5" fill="#37845B"/>
+    <text x="882" y="372" fill="#37845B" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="600">Verified</text>
+    <rect x="678" y="410" width="437" height="89" rx="12" fill="#fff" stroke="#EEEAF2"/>
+    <text x="697" y="434" fill="#4B4552" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="700">Verification steps</text>
+    <circle cx="706" cy="458" r="9" fill="#E8F4EC"/>
+    <path d="m702 458 3 3 5-6" stroke="#37845B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="722" y="462" fill="#5F5966" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10">Document received</text>
+    <path d="M825 458h23" stroke="#D9D3DF" stroke-width="1.5"/>
+    <circle cx="861" cy="458" r="9" fill="#E8F4EC"/>
+    <path d="m857 458 3 3 5-6" stroke="#37845B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="877" y="462" fill="#5F5966" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10">Fields extracted</text>
+    <path d="M975 458h19" stroke="#D9D3DF" stroke-width="1.5"/>
+    <circle cx="1007" cy="458" r="9" fill="#F5EEDC"/>
+    <circle cx="1007" cy="458" r="3" fill="#C28B32"/>
+    <text x="1022" y="462" fill="#5F5966" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10">Review pending</text>
+    <rect x="267" y="514" width="848" height="96" rx="12" fill="#fff" stroke="#EEEAF2"/>
+    <text x="285" y="537" fill="#4B4552" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="700">Recent records</text>
+    <text x="285" y="559" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700">DOCUMENT</text>
+    <text x="562" y="559" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700">TYPE</text>
+    <text x="754" y="559" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700">UPDATED</text>
+    <text x="956" y="559" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700">STATUS</text>
+    <path d="M285 568h811" stroke="#F0EDF3"/>
+    <text x="285" y="588" fill="#514B58" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="600">DOC-001</text>
+    <text x="562" y="588" fill="#77717E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10">General form</text>
+    <text x="754" y="588" fill="#77717E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10">Today, 10:42</text>
+    <rect x="956" y="575" width="78" height="18" rx="9" fill="#E8F4EC"/>
+    <text x="970" y="587" fill="#37845B" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="8" font-weight="700">VERIFIED</text>
+    <rect x="1045" y="575" width="51" height="18" rx="9" fill="#F5EEDC"/>
+    <text x="1055" y="587" fill="#95691F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="8" font-weight="700">PENDING</text>
+  </g>
+  <rect x="942" y="612" width="173" height="22" rx="11" fill="#292532"/>
+  <text x="959" y="627" fill="#F5F1FA" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700" letter-spacing=".7">CONCEPTUAL • NO COMPANY DATA</text>
+</svg>

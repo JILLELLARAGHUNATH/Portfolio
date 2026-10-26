@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F2FA"/>
+      <stop offset="1" stop-color="#E9E5F1"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8060B8"/>
+      <stop offset="1" stop-color="#A98BDA"/>
+    </linearGradient>
+    <filter id="shadow" x="24" y="22" width="1152" height="640" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="12"/>
+      <feGaussianBlur stdDeviation="14"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0.18 0 0 0 0 0.13 0 0 0 0 0.25 0 0 0 0.12 0"/>
+      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+  <path fill="url(#background)" d="M0 0h1200v675H0z"/>
+  <circle cx="1092" cy="84" r="174" fill="#D9C9F1" fill-opacity=".3"/>
+  <circle cx="97" cy="638" r="150" fill="#fff" fill-opacity=".56"/>
+  <g filter="url(#shadow)">
+    <rect x="54" y="44" width="1092" height="585" rx="19" fill="#fff"/>
+    <path d="M73 44h1054a19 19 0 0 1 19 19v45H54V63a19 19 0 0 1 19-19Z" fill="#FBFAFD"/>
+    <path d="M54 108h1092" stroke="#ECE8F1"/>
+    <circle cx="79" cy="76" r="6" fill="#D9D2E2"/>
+    <circle cx="101" cy="76" r="6" fill="#D9D2E2"/>
+    <circle cx="123" cy="76" r="6" fill="#D9D2E2"/>
+    <rect x="161" y="64" width="23" height="23" rx="7" fill="#EAE3F4"/>
+    <path d="M172.5 69v13m-6.5-6.5h13" stroke="#8060B8" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="193" y="81" fill="#393342" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700">Appointment schedule</text>
+    <rect x="973" y="60" width="146" height="31" rx="9" fill="#F1EBF9"/>
+    <circle cx="992" cy="75.5" r="5" fill="#8060B8"/>
+    <text x="1005" y="80" fill="#6A548B" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="600">Day schedule</text>
+    <path d="M54 108h184v521H73a19 19 0 0 1-19-19V108Z" fill="#FBFAFD"/>
+    <path d="M238 108v521" stroke="#ECE8F1"/>
+    <text x="76" y="145" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2">SCHEDULING</text>
+    <rect x="69" y="160" width="153" height="37" rx="9" fill="#F1EBF9"/>
+    <rect x="81" y="171" width="15" height="15" rx="2.5" stroke="#8060B8" stroke-width="1.5"/>
+    <path d="M81 176h15m-11-8v5m7-5v5" stroke="#8060B8" stroke-width="1.3" stroke-linecap="round"/>
+    <text x="105" y="183" fill="#654B8C" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="700">Appointments</text>
+    <text x="82" y="224" fill="#696371" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12">Doctors</text>
+    <text x="82" y="257" fill="#696371" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12">Day view</text>
+    <text x="82" y="290" fill="#696371" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12">Week view</text>
+    <path d="M72 313h148" stroke="#ECE8F1"/>
+    <text x="76" y="340" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2">SAMPLE STATUS</text>
+    <circle cx="87" cy="365" r="4" fill="#8060B8"/>
+    <text x="100" y="369" fill="#696371" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11">Scheduled</text>
+    <circle cx="87" cy="394" r="4" fill="#499875"/>
+    <text x="100" y="398" fill="#696371" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11">Completed</text>
+    <circle cx="84" cy="591" r="15" fill="#EAE3F4"/>
+    <text x="79" y="595" fill="#73579F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700">UI</text>
+    <text x="108" y="589" fill="#4C4654" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="600">Sample schedule</text>
+    <text x="108" y="604" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">Illustrative records</text>
+    <text x="267" y="145" fill="#292532" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="700">Appointments</text>
+    <text x="267" y="165" fill="#87818F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11">Select a doctor and review the daily appointment timeline.</text>
+    <rect x="267" y="183" width="293" height="48" rx="10" fill="#FBFAFD" stroke="#EEEAF2"/>
+    <circle cx="290" cy="207" r="13" fill="#EAE3F4"/>
+    <path d="M290 201a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-7 13c.7-3 3-4.5 7-4.5s6.3 1.5 7 4.5" stroke="#8060B8" stroke-width="1.4"/>
+    <text x="312" y="203" fill="#92909A" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="8">SELECTED DOCTOR</text>
+    <text x="312" y="218" fill="#4B4552" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="600">Dr. Sarah Chen · Cardiology</text>
+    <path d="m535 204 5 5 5-5" stroke="#8E8895" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="572" y="183" width="286" height="48" rx="10" fill="#FBFAFD" stroke="#EEEAF2"/>
+    <circle cx="595" cy="207" r="12" stroke="#BEB8C5"/>
+    <path d="m598 204-5 3 5 3" stroke="#706A76" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="616" y="211" fill="#5E5865" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="600">Monday, October 26</text>
+    <circle cx="821" cy="207" r="12" stroke="#BEB8C5"/>
+    <path d="m818 204 5 3-5 3" stroke="#706A76" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="870" y="183" width="245" height="48" rx="10" fill="#FBFAFD" stroke="#EEEAF2"/>
+    <rect x="880" y="191" width="101" height="32" rx="7" fill="#F0EBF7"/>
+    <text x="913" y="211" fill="#6D5296" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700">Day</text>
+    <text x="1030" y="211" fill="#77717E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="600">Week</text>
+    <rect x="267" y="247" width="848" height="350" rx="12" fill="#fff" stroke="#EEEAF2"/>
+    <rect x="268" y="248" width="846" height="43" rx="11" fill="#FBFAFD"/>
+    <text x="286" y="275" fill="#4B4552" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="700">Daily timeline</text>
+    <text x="948" y="274" fill="#96909F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">30 minute slots</text>
+    <path d="M267 291h848" stroke="#EEEAF2"/>
+    <path d="M345 291v305" stroke="#EEEAF2"/>
+    <path d="M267 335h848m-848 48h848m-848 48h848m-848 48h848m-848 48h848m-848 48h848" stroke="#F0EDF3"/>
+    <text x="301" y="321" fill="#8C8692" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">9:00 AM</text>
+    <text x="295" y="369" fill="#8C8692" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">10:00 AM</text>
+    <text x="295" y="417" fill="#8C8692" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">11:00 AM</text>
+    <text x="301" y="465" fill="#8C8692" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">12:00 PM</text>
+    <text x="301" y="513" fill="#8C8692" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">1:00 PM</text>
+    <text x="301" y="561" fill="#8C8692" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">2:00 PM</text>
+    <rect x="359" y="300" width="533" height="30" rx="6" fill="#EDE7F6"/>
+    <rect x="359" y="300" width="4" height="30" rx="2" fill="#8060B8"/>
+    <text x="374" y="313" fill="#514464" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700">Patient 01 · General checkup</text>
+    <text x="374" y="324" fill="#776A8D" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="8">30 min · 9:00 AM</text>
+    <rect x="1011" y="306" width="78" height="17" rx="8.5" fill="#E8F4EC"/>
+    <text x="1024" y="318" fill="#37845B" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="7" font-weight="700">COMPLETED</text>
+    <rect x="359" y="348" width="533" height="30" rx="6" fill="#E8F3EF"/>
+    <rect x="359" y="348" width="4" height="30" rx="2" fill="#499875"/>
+    <text x="374" y="361" fill="#415C50" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700">Patient 02 · Consultation</text>
+    <text x="374" y="372" fill="#668071" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="8">60 min · 10:00 AM</text>
+    <rect x="1011" y="354" width="78" height="17" rx="8.5" fill="#F1EBF9"/>
+    <text x="1025" y="366" fill="#6D5296" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="7" font-weight="700">SCHEDULED</text>
+    <rect x="359" y="396" width="533" height="30" rx="6" fill="#F8EFDF"/>
+    <rect x="359" y="396" width="4" height="30" rx="2" fill="#C58B2D"/>
+    <text x="374" y="409" fill="#65543A" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700">Patient 03 · Follow-up</text>
+    <text x="374" y="420" fill="#8B7757" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="8">30 min · 11:00 AM</text>
+    <rect x="1011" y="402" width="78" height="17" rx="8.5" fill="#F1EBF9"/>
+    <text x="1025" y="414" fill="#6D5296" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="7" font-weight="700">SCHEDULED</text>
+    <rect x="359" y="492" width="533" height="30" rx="6" fill="#E9EFF8"/>
+    <rect x="359" y="492" width="4" height="30" rx="2" fill="#6884B5"/>
+    <text x="374" y="505" fill="#4B5870" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700">Patient 04 · Procedure</text>
+    <text x="374" y="516" fill="#71819C" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="8">60 min · 1:00 PM</text>
+    <rect x="1011" y="498" width="78" height="17" rx="8.5" fill="#F1EBF9"/>
+    <text x="1025" y="510" fill="#6D5296" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="7" font-weight="700">SCHEDULED</text>
+    <rect x="359" y="540" width="533" height="30" rx="6" fill="#F8F6FA" stroke="#DCD5E5" stroke-dasharray="4 4"/>
+    <text x="374" y="559" fill="#89828F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9">Available appointment time</text>
+    <rect x="942" y="612" width="173" height="22" rx="11" fill="#292532"/>
+    <text x="960" y="627" fill="#F5F1FA" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700" letter-spacing=".6">ILLUSTRATIVE SAMPLE UI</text>
+  </g>
+</svg>
