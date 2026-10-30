@@ -799,6 +799,20 @@ a:focus-visible {
   backdrop-filter: blur(8px);
 }
 
+.project-confidential {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  padding: 0.42rem 0.65rem;
+  border: 1px solid #ffffff3d;
+  border-radius: 999px;
+  background: #211b2dcc;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
 .project-content {
   padding: 1.35rem 1.4rem 1.5rem;
 }
@@ -824,6 +838,25 @@ a:focus-visible {
   color: #6f6a77;
   font-size: 0.82rem;
   line-height: 1.7;
+}
+
+.project-capabilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: -0.3rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.project-capabilities li {
+  padding: 0.34rem 0.52rem;
+  border: 1px solid #e8e1f1;
+  border-radius: 999px;
+  background: #f7f4fb;
+  color: #685184;
+  font-size: 0.62rem;
+  font-weight: 600;
 }
 
 .project-link,
@@ -868,6 +901,57 @@ a:focus-visible {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.achievement-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 10px 35px #1d17310a;
+}
+
+.achievement-icon {
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  flex: none;
+  place-items: center;
+  border-radius: 0.8rem;
+  background: #f1ebf9;
+  color: #7454a6;
+}
+
+.achievement-card h3,
+.achievement-card p {
+  margin: 0;
+}
+
+.achievement-card h3 {
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.achievement-card p {
+  margin-top: 0.4rem;
+  color: #77717f;
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.achievement-card .achievement-organization {
+  color: #7454a6;
+  font-weight: 650;
 }
 
 .skill-card {
@@ -1226,6 +1310,10 @@ a:focus-visible {
   .experience-card {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .achievement-grid {
+    grid-template-columns: 1fr;
   }
 
   .experience-date {

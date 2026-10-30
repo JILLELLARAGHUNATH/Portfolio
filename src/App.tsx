@@ -13,7 +13,9 @@ import {
   Mail,
   Menu,
   Phone,
+  Trophy,
   UserRound,
+  UsersRound,
   X,
 } from 'lucide-react';
 
@@ -21,6 +23,7 @@ const navigation = [
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Achievements', href: '#achievements' },
   { label: 'Skills', href: '#skills' },
   { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
@@ -38,6 +41,7 @@ function App() {
         <About />
         <Experience />
         <Projects />
+        <Achievements />
         <Skills />
         <Education />
         <Certifications />
@@ -64,7 +68,7 @@ function Header() {
           </span>
         </a>
 
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-7 lg:flex">
           {navigation.map((item) => (
             <li key={item.href}>
               <a className="nav-link" href={item.href}>
@@ -74,7 +78,7 @@ function Header() {
           ))}
         </ul>
 
-        <a className="header-contact hidden md:inline-flex" href="#contact">
+        <a className="header-contact hidden lg:inline-flex" href="#contact">
           Let&apos;s talk <ArrowUpRight aria-hidden="true" size={15} />
         </a>
 
@@ -82,7 +86,7 @@ function Header() {
           aria-controls="mobile-navigation"
           aria-expanded={menuOpen}
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          className="menu-toggle md:hidden"
+          className="menu-toggle lg:hidden"
           onClick={() => setMenuOpen((open) => !open)}
           type="button"
         >
@@ -91,7 +95,7 @@ function Header() {
       </nav>
 
       <div
-        className="mobile-navigation md:hidden"
+        className="mobile-navigation lg:hidden"
         hidden={!menuOpen}
         id="mobile-navigation"
       >
@@ -333,7 +337,7 @@ function Experience() {
             <p className="experience-type">Current role · Full stack development</p>
             <h3>Full Stack Developer</h3>
             <p className="experience-company">
-              Persevex <span aria-hidden="true">·</span> Bengaluru, Karnataka, India
+              Persevex LLP <span aria-hidden="true">·</span> Bengaluru, Karnataka, India
             </p>
             <ul className="experience-list">
               <li>
@@ -349,16 +353,15 @@ function Experience() {
               </li>
             </ul>
             <ul aria-label="Technologies and workflows used in this role" className="experience-stack">
-              {[
+              {              [
                 'Python',
                 'Flask',
-                'HTML',
-                'CSS',
-                'JavaScript',
-                'SQL',
-                'PostgreSQL / Supabase',
+                'Node.js',
+                'REST APIs',
+                'PostgreSQL',
+                'Prisma ORM',
                 'SQLite',
-                'CSV / Excel',
+                'RBAC',
               ].map((skill) => (
                 <li key={skill}>{skill}</li>
               ))}
@@ -370,7 +373,7 @@ function Experience() {
             <span className="experience-icon">
               <Briefcase aria-hidden="true" size={21} />
             </span>
-            <span>May — July 2024</span>
+            <span>May 2024 — July 2024</span>
           </div>
           <div className="experience-details">
             <p className="experience-type">Internship · Image processing</p>
@@ -381,10 +384,9 @@ function Experience() {
               Youngminds Technology Solutions Pvt Ltd
             </p>
             <ul className="experience-list">
-              <li>Worked on MATLAB image-processing tasks as part of the internship.</li>
-              <li>
-                Explored image-processing techniques and their real-world applications.
-              </li>
+              <li>Preprocessed and analyzed weed and crop images.</li>
+              <li>Applied segmentation techniques to separate image regions.</li>
+              <li>Extracted image features for analysis.</li>
             </ul>
             <a
               className="text-link"
@@ -422,6 +424,7 @@ type PrivateProject = {
   description: string;
   image: string;
   imageAlt: string;
+  capabilities: string[];
 };
 
 type Project = PublicProject | PrivateProject;
@@ -429,23 +432,37 @@ type Project = PublicProject | PrivateProject;
 const projects: Project[] = [
   {
     visibility: 'private',
-    title: 'Document Automation & Verification Platform',
+    title: 'Automated Offer Letter & Certificate Generation System',
     category: 'private',
     description:
-      'A document automation solution for document generation, processing, and verification workflows.',
+      'Generates offer letters and certificates, with supporting document processing and verification workflows.',
     image: '/project-images/document-workflow.svg',
     imageAlt:
       'Conceptual illustration of a private document workflow, with a document preview, metadata, verification steps, and record statuses; no company data shown.',
+    capabilities: [
+      'Offer letters',
+      'Certificates',
+      'Document processing',
+      'Verification',
+    ],
   },
   {
     visibility: 'private',
-    title: 'Employee Operations Management Platform',
+    title: 'WorkSync – Employee & Attendance Management System',
     category: 'private',
     description:
-      'An internal operations management solution supporting employee-related workflows and administrative processes.',
+      'Supports employee records, attendance check-in and check-out, leave management, office settings, role-based access, and database-backed workflows.',
     image: '/project-images/employee-operations.svg',
     imageAlt:
       'Conceptual illustration of a private employee operations dashboard with sample profiles, attendance statuses, and administrative summaries; no company data shown.',
+    capabilities: [
+      'Employee management',
+      'Attendance',
+      'Leave management',
+      'RBAC',
+      'Office settings',
+      'Database workflows',
+    ],
   },
   {
     visibility: 'public',
@@ -561,6 +578,57 @@ function Projects() {
   );
 }
 
+const achievements = [
+  {
+    title: '1st Prize – Robotics & Automation Competition',
+    organization: 'KARE IEEE Robotics and Automation Society',
+    detail: 'First-prize recognition in a robotics and automation competition.',
+    icon: <Trophy aria-hidden="true" size={21} />,
+  },
+  {
+    title: 'Secretary – IEEE Signal Processing Society',
+    organization: 'Kalasalingam Academy of Research and Education',
+    detail:
+      'Supported technical workshops and coordinated with faculty and student members.',
+    icon: <UsersRound aria-hidden="true" size={21} />,
+  },
+];
+
+function Achievements() {
+  return (
+    <section
+      aria-labelledby="achievements-title"
+      className="section section-light"
+      id="achievements"
+    >
+      <div className="container mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionHeading
+          description="Recognition and student leadership."
+          id="achievements-title"
+          label="Achievements & leadership"
+          title="Contributions beyond the classroom."
+        />
+        <div className="achievement-grid">
+          {achievements.map((achievement, index) => (
+            <Reveal
+              className="achievement-card"
+              delay={index * 0.06}
+              key={achievement.title}
+            >
+              <span className="achievement-icon">{achievement.icon}</span>
+              <div>
+                <h3>{achievement.title}</h3>
+                <p className="achievement-organization">{achievement.organization}</p>
+                <p>{achievement.detail}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const isPrivate = project.visibility === 'private';
 
@@ -586,6 +654,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         {!isPrivate && (
           <span className="project-category">{project.category}</span>
         )}
+        {isPrivate && (
+          <span className="project-confidential">Private / Confidential</span>
+        )}
       </div>
       <div className="project-content">
         {!isPrivate && (
@@ -593,6 +664,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         )}
         <h3>{project.title}</h3>
         <p className="project-description">{project.description}</p>
+        {isPrivate && (
+          <ul aria-label="Project scope" className="project-capabilities">
+            {project.capabilities.map((capability) => (
+              <li key={capability}>{capability}</li>
+            ))}
+          </ul>
+        )}
         {!isPrivate && project.repository ? (
           <a
             className="project-link project-github-button"
@@ -619,33 +697,33 @@ function getProjectVisualClass(project: Project) {
 
 const skillGroups = [
   {
-    title: 'Professional · Application development',
-    skills: ['Python', 'Flask', 'JavaScript'],
+    title: 'Frontend',
+    skills: ['React.js', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS'],
     icon: <Code2 aria-hidden="true" size={19} />,
   },
   {
-    title: 'Professional · Frontend',
-    skills: ['HTML5', 'CSS3', 'JavaScript'],
+    title: 'Backend',
+    skills: ['Node.js', 'Python', 'REST APIs', 'Flask'],
+    icon: <Briefcase aria-hidden="true" size={19} />,
+  },
+  {
+    title: 'Databases',
+    skills: ['SQL', 'PostgreSQL', 'Prisma ORM', 'SQLite'],
+    icon: <Code2 aria-hidden="true" size={19} />,
+  },
+  {
+    title: 'Authentication',
+    skills: ['Role-Based Access Control (RBAC)'],
     icon: <UserRound aria-hidden="true" size={19} />,
   },
   {
-    title: 'Professional · Data & workflows',
-    skills: ['SQL', 'PostgreSQL / Supabase', 'SQLite', 'CSV / Excel processing'],
+    title: 'Tools',
+    skills: ['Git', 'GitHub', 'Vercel', 'npm', 'Vite', 'Tailwind CSS'],
     icon: <Briefcase aria-hidden="true" size={19} />,
   },
   {
-    title: 'Personal projects · Web',
-    skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
-    icon: <Code2 aria-hidden="true" size={19} />,
-  },
-  {
-    title: 'Personal projects · Tools',
-    skills: ['Git', 'GitHub', 'npm', 'Vite', 'Vercel'],
-    icon: <Briefcase aria-hidden="true" size={19} />,
-  },
-  {
-    title: 'Engineering & academic projects',
-    skills: ['MATLAB', 'Image processing', 'Arduino', 'IoT sensors', 'Python'],
+    title: 'Engineering & project experience',
+    skills: ['MATLAB', 'Image Processing', 'Arduino', 'IoT sensors'],
     icon: <Briefcase aria-hidden="true" size={19} />,
   },
 ];
@@ -686,6 +764,7 @@ const education = [
     institution: 'Kalasalingam Academy of Research and Education',
     degree: 'Bachelor of Technology in Electronics and Communication Engineering',
     detail: 'CGPA: 7.87',
+    year: '2022–2026',
     location: 'Tamil Nadu',
   },
   {
@@ -731,6 +810,7 @@ function Education() {
               </div>
               <div className="education-meta">
                 <strong>{item.detail}</strong>
+                {item.year && <span>{item.year}</span>}
               </div>
             </Reveal>
           ))}
@@ -742,19 +822,17 @@ function Education() {
 
 const certifications = [
   {
-    name: 'Python',
-    issuer: 'HackerRank',
-    link: 'https://www.hackerrank.com/certificates/iframe/c7ebcb4babaa',
-  },
-  {
-    name: 'SQL',
+    name: 'SQL (Intermediate)',
     issuer: 'HackerRank',
     link: 'https://www.hackerrank.com/certificates/iframe/be1322f1ba4f',
   },
   {
-    name: 'CSS',
-    issuer: 'HackerRank',
-    link: 'https://www.hackerrank.com/certificates/iframe/a5fe2ca0471f',
+    name: 'Python',
+    issuer: 'MindLuster',
+  },
+  {
+    name: 'Power BI for Beginners',
+    issuer: 'Simplilearn',
   },
 ];
 
@@ -838,7 +916,7 @@ function Contact() {
               <ArrowUpRight aria-hidden="true" size={15} />
             </a>
             <a
-              href="https://www.linkedin.com/in/jillella-raghunath-ece-a69555268"
+              href="https://linkedin.com/in/raghunath-jillella-a69555268"
               rel="noopener noreferrer"
               target="_blank"
             >
